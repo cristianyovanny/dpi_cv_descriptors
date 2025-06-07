@@ -37,7 +37,7 @@ if __name__ == '__main__':
     y_train_enc, y_test_enc, class_names = encode_labels(y_train, y_test)
 
     model = build_model(X_train.shape[1], len(class_names))
-    model.fit(X_train, y_train_enc, epochs=20, batch_size=32, validation_split=0.1)
+    model.fit(X_train, y_train_enc, epochs=10000, batch_size=32, validation_split=0.1)
 
     y_pred = np.argmax(model.predict(X_test), axis=1)
     acc = accuracy_score(y_test_enc, y_pred)

@@ -10,7 +10,7 @@ def extract_hog_descriptor(image):
                            _cellSize=(8, 8),
                            _nbins=9)
     descriptor = hog.compute(image)
-    print("Resized shape:", descriptor.shape)
+    #print("Resized shape:", descriptor.shape)
     return descriptor.flatten()  # shape: (1, N)
 
 def extract_and_save_hog_features(query_dir, gallery_dir, output_dir):
@@ -23,7 +23,7 @@ def extract_and_save_hog_features(query_dir, gallery_dir, output_dir):
             gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
             resized = cv.resize(gray, (64, 128))
             descriptor = extract_hog_descriptor(resized)
-            print("Feature shape:", descriptor.shape)
+            #print("Feature shape:", descriptor.shape)
             X.append(descriptor)
             Y.append(label)
         np.save(os.path.join(output_dir, f"{prefix}_feats.npy"), np.vstack(X))
